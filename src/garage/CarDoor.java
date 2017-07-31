@@ -9,8 +9,10 @@ public class CarDoor {
     private boolean openWindow;
 
     CarDoor(){
-        this.openDor = false;
-        this.openWindow = false;
+        /*this.openDor = false;
+        this.openWindow = false;*/
+        setCloseDor();
+        setCloseWindow();
     }
 
     CarDoor(boolean openDor, boolean openWindow){
@@ -18,5 +20,34 @@ public class CarDoor {
         this.openWindow = openWindow;
     }
 
-    
+    public void setOpenDor(){
+        this.openDor = true;
+    }
+
+    public void setCloseDor(){
+        this.openDor = false;
+    }
+
+    public void setOpenWindow(){
+        this.openWindow = true;
+    }
+
+    public void setCloseWindow(){
+        this.openWindow = false;
+    }
+
+    public void setOpenOrCloseDor(){
+        openDor = (openDor) ? false : true;
+    }
+
+    public void setOpenOrCloseWindow(){
+        openWindow = (openWindow) ? false : true;
+    }
+
+    public void info(){
+
+        System.out.println("Статус двери (открыта): " + openDor);
+        System.out.println("Статус окна (открыто): " + openWindow);
+
+    }
 }
