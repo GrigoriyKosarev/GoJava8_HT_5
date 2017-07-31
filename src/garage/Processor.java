@@ -25,6 +25,9 @@ public class Processor {
         wheel.setEraseOfPercentCondition(10);
         wheel.info();
 
+        //Клас Car
+        Car mustang = new Car();
+
     }
 
 }
