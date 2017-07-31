@@ -86,5 +86,15 @@ public class Car {
     public void setClearPassengerQuantity(){
         passengerQuantity = 0;
     }
-    
+
+    //Получить дверь по индексу
+    public CarDoor getDoor(int indexDoor){
+        if (indexDoor >= doors.length)
+            return doors[indexDoor];
+        else {
+            System.out.println("индекс превышает длинну массива");
+            return null;
+        }
+
+    }
 }
