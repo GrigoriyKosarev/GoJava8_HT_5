@@ -45,6 +45,19 @@ public class Car {
         this.passengerCapacity = passengerCapacity;
         this.passengerQuantity = passengerQuantity;
         this.speed = speed;
+    }
 
+    //Вывести в консоль данные об объекте (все поля и вычисленную максимальную скорость в зависимости от
+    // целостности колес и наличия водителя)
+    public void info(){
+        System.out.println("дата производства: " + dataProduce);
+        System.out.println("тип двигателя: " + engineType);
+        System.out.println("максимальная скорость машины: " + maxSpeed);
+        System.out.println("время разгона до 100км/ч: " + accelerationTimeTo100);
+        System.out.println("пассажировместимость: " + passengerCapacity);
+        System.out.println("кол-во пасажиров внутри в данный момент: " + passengerQuantity);
+        System.out.println("текущая скорость: " + speed);
+        //private CarWheel[] wheel;             //массив колес
+        //private CarDoor[] door;               //массив дверей
     }
 }

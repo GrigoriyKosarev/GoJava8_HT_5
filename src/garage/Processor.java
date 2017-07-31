@@ -2,6 +2,8 @@ package garage;
 
 import garage.CarDoor;
 
+import java.util.Date;
+
 /**
  * Created by admin on 31.07.2017.
  */
@@ -27,6 +29,7 @@ public class Processor {
 
         //Клас Car
         Car mustang = new Car();
+        mustang.info();
 
     }
 
