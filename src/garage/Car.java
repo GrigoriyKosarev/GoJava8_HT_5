@@ -15,7 +15,7 @@ public class Car {
     private int passengerQuantity;        //кол-во пасажиров внутри в данный момент
     private double speed;                 //текущая скорость
     private CarWheel[] wheels = new CarWheel[4]; //массив колес
-    private CarDoor[] doors = new CarDoor[4];               //массив дверей
+    private CarDoor[] doors = new CarDoor[4];    //массив дверей
 
     //Нет пустого конструктора. Так как есть поля в классе, которые нельзя изменять после создания объекта.
     // Например дата производства.
@@ -50,6 +50,8 @@ public class Car {
     //Вывести в консоль данные об объекте (все поля и вычисленную максимальную скорость в зависимости от
     // целостности колес и наличия водителя)
     public void info(){
+
+        System.out.println("---------------------------------------------");
         System.out.println("дата производства: " + dataProduce);
         System.out.println("тип двигателя: " + engineType);
         System.out.println("максимальная скорость машины: " + maxSpeed);
@@ -57,6 +59,8 @@ public class Car {
         System.out.println("пассажировместимость: " + passengerCapacity);
         System.out.println("кол-во пасажиров внутри в данный момент: " + passengerQuantity);
         System.out.println("текущая скорость: " + speed);
+        System.out.println("---------------------------------------------");
+
         //private CarWheel[] wheel;             //массив колес
         //private CarDoor[] door;               //массив дверей
     }
@@ -89,12 +93,84 @@ public class Car {
 
     //Получить дверь по индексу
     public CarDoor getDoor(int indexDoor){
-        if (indexDoor >= doors.length)
+        if (indexDoor < doors.length)
             return doors[indexDoor];
         else {
             System.out.println("индекс превышает длинну массива");
             return null;
         }
+
+    }
+
+    //Получить колесо по индексу
+    public CarWheel getWheel(int indexWheel){
+        if (indexWheel < doors.length)
+            return wheels[indexWheel];
+        else {
+            System.out.println("индекс превышает длинну массива");
+            return null;
+        }
+    }
+
+    //Добавить дверь в автомобиль
+    public void addDoorToCar(CarDoor door, int indexDoor){
+        if (doors.length < indexDoor)
+            System.out.println("Error! ");
+        else
+            doors[indexDoor] = door;
+    }
+
+    //Добавить колесо в автомобиль
+    public void addWheelToCar(CarWheel wheel, int indexWheel){
+        if (wheels.length < indexWheel)
+            System.out.println("Error! ");
+        else
+            wheels[indexWheel] = wheel;
+    }
+
+    //Снять все колеса с машины
+    public void deleteAllWheelToCar(){
+
+        wheels = new CarWheel[0];
+
+    }
+
+    public void addNewWheelToCar(CarWheel tempWheel){
+
+        CarWheel[] tempWheels = new CarWheel[wheels.length + 1];
+
+        for (int i = 0; i < wheels.length; i++){
+            tempWheels[i] = wheels[i];
+        }
+        tempWheels[tempWheels.length-1] = tempWheel;
+
+        wheels = new CarWheel[tempWheels.length-1];
+        wheels = tempWheels;
+
+    }
+
+    public double getMinWheelCondition(){
+
+        if (wheels.length < 1 )
+            return 0;
+
+        double minCondition = wheels[0].getCondition();
+
+        for (int i = 0; i < wheels.length; i++){
+            if (wheels[i].getCondition() < minCondition)
+                minCondition = wheels[i].getCondition();
+        }
+
+        return minCondition;
+
+    }
+
+    public double getCurrentMaxSpeed(){
+
+        if (passengerQuantity < 0)
+            return 0;
+
+        return maxSpeed * getMinWheelCondition();
 
     }
 }
