@@ -6,18 +6,36 @@ package garage;
 public class CarDoor {
 
     private boolean openDor;
-    private boolean openWindow;
+    private CarDoorWindow  window = new CarDoorWindow();
 
     CarDoor(){
         /*this.openDor = false;
         this.openWindow = false;*/
         setCloseDor();
-        setCloseWindow();
+        window.setCloseWindow();
     }
 
     CarDoor(boolean openDor, boolean openWindow){
         this.openDor = openDor;
-        this.openWindow = openWindow;
+       /* this.openWindow = openWindow;*/
+    }
+
+    public class CarDoorWindow{
+
+        private boolean openWindow;
+
+        CarDoorWindow(){
+            setCloseWindow();
+        }
+
+        public void setOpenWindow(){
+            this.openWindow = true;
+        }
+
+        public void setCloseWindow(){
+            this.openWindow = false;
+        }
+
     }
 
     public void setOpenDor(){
@@ -28,26 +46,18 @@ public class CarDoor {
         this.openDor = false;
     }
 
-    public void setOpenWindow(){
-        this.openWindow = true;
-    }
-
-    public void setCloseWindow(){
-        this.openWindow = false;
-    }
-
     public void setOpenOrCloseDor(){
         openDor = (openDor) ? false : true;
     }
 
     public void setOpenOrCloseWindow(){
-        openWindow = (openWindow) ? false : true;
+        window.openWindow = (window.openWindow) ? false : true;
     }
 
     public void info(){
 
         System.out.println("Статус двери (открыта): " + openDor);
-        System.out.println("Статус окна (открыто): " + openWindow);
+        System.out.println("Статус окна (открыто): " + window.openWindow);
 
     }
 }
